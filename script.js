@@ -1,24 +1,37 @@
 const hex = document.getElementById("hex");
+const still = document.getElementById("slimeStill");
 const gif = document.getElementById("slimeGif");
 
-// Start invisible
-gif.style.opacity = 0;
-
-// Hover starts the enlarge/rotate animation
+// Hover in → enlarge + swap to GIF
 hex.addEventListener("mouseenter", () => {
-  hex.classList.add("hovered");
-});
+    hex.classList.add("hovered");
 
-// When finished enlarging, show + restart the GIF
-hex.addEventListener("transitionend", (e) => {
-  if (e.propertyName === "transform") {
-    gif.src = gif.src; // restart the GIF by reloading source
+    // Show GIF, hide still
     gif.style.opacity = 1;
-  }
+    still.style.opacity = 0;
+
+    // Force GIF to restart from frame 0
+    gif.src = gif.src;
 });
 
-// Hide the GIF when mouse leaves
+// After enlarge animation ends
+hex.addEventListener("transitionend", e => {
+    if (e.propertyName === "transform") {
+        // nothing else needed
+    }
+});
+
+// Hover out → shrink + hide GIF instantly
 hex.addEventListener("mouseleave", () => {
-  hex.classList.remove("hovered");
-  gif.style.opacity = 0;
+    hex.classList.remove("hovered");
+
+    // Hide GIF immediately
+    gif.style.opacity = 0;
+
+    // Show still image again
+    still.style.opacity = 1;
+
+    // Reset GIF so it starts from the beginning next hover
+    gif.src = "";
+    setTimeout(() => gif.src = "images/Slime gif.gif", 50);
 });
