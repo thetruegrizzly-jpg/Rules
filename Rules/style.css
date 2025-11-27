@@ -7,6 +7,7 @@ body {
   background: url("images/Background.jpg") center/cover no-repeat;
 }
 
+/* Main hex wrapper */
 .hex-wrapper {
   position: relative;
   width: 250px;
@@ -15,10 +16,12 @@ body {
   transform-origin: center;
 }
 
+/* Hover animation */
 .hex-wrapper.hovered {
   transform: scale(1.25) rotate(180deg);
 }
 
+/* White hex frame */
 .hex-frame {
   position: absolute;
   width: 100%;
@@ -27,6 +30,7 @@ body {
   pointer-events: none;
 }
 
+/* Slime images (PNG + GIF) */
 .slime {
   position: absolute;
   width: 55%;
