@@ -50,4 +50,5 @@ body {
 .gif {
   opacity: 0;
   transition: opacity 0.1s linear;
+  image-rendering: pixelated;
 }
