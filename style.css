@@ -1,0 +1,50 @@
+/* Make background cover the screen */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("images/Background.jpg") center/cover no-repeat;
+}
+
+/* Container for the hex + slime */
+.hex-wrapper {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  transition: transform 0.35s ease;
+  transform-origin: center;
+}
+
+/* Enlarge + rotate on hover */
+.hex-wrapper.hovered {
+  transform: scale(1.25) rotate(180deg);
+}
+
+/* White hex frame */
+.hex-frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Slime GIF centered */
+.slime {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+/* GIF starts invisible */
+.gif {
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
