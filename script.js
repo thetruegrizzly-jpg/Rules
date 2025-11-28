@@ -6,15 +6,14 @@ const gif = document.getElementById("slimeGif");
 hex.addEventListener("mouseenter", () => {
     hex.classList.add("hovered");
 
-    // Wait for scale animation to finish (0.35s)
+    // Wait until scale/rotate finishes
     setTimeout(() => {
-        still.style.opacity = 0;   // hide still
-        gif.style.opacity = 1;     // show gif
+        still.style.opacity = 0;
+        gif.style.opacity = 1;
 
-        // Restart GIF cleanly without flashing
-        const src = gif.src;
-        gif.src = "";
-        gif.src = src;
+        // Restart GIF without blank frame flash
+        const currentSrc = gif.src;
+        gif.src = currentSrc;
     }, 350);
 });
 
@@ -22,8 +21,9 @@ hex.addEventListener("mouseenter", () => {
 hex.addEventListener("mouseleave", () => {
     hex.classList.remove("hovered");
 
-    gif.style.opacity = 0;      // hide GIF
-    still.style.opacity = 1;    // show still image
+    // Fade back to still image
+    gif.style.opacity = 0;
+    still.style.opacity = 1;
 
-    // DO NOT clear gif.src — prevents flashing border
+    // Do NOT clear gif.src — this prevents flashing
 });
