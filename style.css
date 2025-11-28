@@ -8,7 +8,7 @@ body {
   background: url("images/Background.jpg") center/cover no-repeat;
 }
 
-/* Wrapper that holds hex + slime */
+/* Wrapper (scale only) */
 .hex-wrapper {
   position: relative;
   width: 250px;
@@ -22,7 +22,7 @@ body {
   transform: scale(1.25);
 }
 
-/* White hexagon frame (only object that rotates) */
+/* Hex frame (rotation only) */
 .hex-frame {
   position: absolute;
   width: 100%;
@@ -30,33 +30,4 @@ body {
   object-fit: contain;
   pointer-events: none;
   transition: transform 0.35s ease;
-}
-
-/* Rotation ONLY on the frame */
-.hex-wrapper.hovered .hex-frame {
-  transform: rotate(180deg);
-}
-
-/* Slime image + GIF share same placement */
-.slime {
-  position: absolute;
-  width: 55%;
-  height: 55%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  image-rendering: pixelated;
-}
-
-/* Still slime shows by default */
-.still {
-  opacity: 1;
-  transition: opacity 0.1s linear;
-}
-
-/* GIF is hidden until enlarged */
-.gif {
-  opacity: 0;
-  transition: opacity 0.1s linear;
-}
+  transform-orig
