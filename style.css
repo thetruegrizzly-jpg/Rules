@@ -1,4 +1,4 @@
-/* Make background cover the screen */
+/* Full-screen background */
 body {
   margin: 0;
   height: 100vh;
@@ -8,7 +8,7 @@ body {
   background: url("images/Background.jpg") center/cover no-repeat;
 }
 
-/* Container for the hex + slime */
+/* Div that holds hex + slime images */
 .hex-wrapper {
   position: relative;
   width: 250px;
@@ -17,9 +17,9 @@ body {
   transform-origin: center;
 }
 
-/* Enlarge + rotate on hover */
+/* Enlargement ONLY — no rotation */
 .hex-wrapper.hovered {
-  transform: scale(1.25) rotate(180deg);
+  transform: scale(1.25);
 }
 
 /* White hex frame */
@@ -31,7 +31,7 @@ body {
   pointer-events: none;
 }
 
-/* Slime GIF centered */
+/* Slime images (both still + GIF) */
 .slime {
   position: absolute;
   width: 55%;
@@ -43,7 +43,13 @@ body {
   image-rendering: pixelated;
 }
 
-/* GIF starts invisible */
+/* Still image is visible at start */
+.still {
+  opacity: 1;
+  transition: opacity 0.1s linear;
+}
+
+/* GIF is hidden at start */
 .gif {
   opacity: 0;
   transition: opacity 0.1s linear;
