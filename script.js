@@ -2,27 +2,28 @@ const hex = document.getElementById("hex");
 const still = document.getElementById("slimeStill");
 const gif = document.getElementById("slimeGif");
 
-// When cursor enters — enlarge + swap images
+// Hover IN
 hex.addEventListener("mouseenter", () => {
     hex.classList.add("hovered");
 
-    // Start GIF ONLY after enlargement finishes
+    // Wait for scale animation to finish (0.35s)
     setTimeout(() => {
-        gif.style.opacity = 1;
-        still.style.opacity = 0;
+        still.style.opacity = 0;   // hide still
+        gif.style.opacity = 1;     // show gif
 
-        // Restart the GIF by resetting src
-        gif.src = "images/Slime gif.gif";
-    }, 350); // matches CSS transition time
+        // Restart GIF cleanly without flashing
+        const src = gif.src;
+        gif.src = "";
+        gif.src = src;
+    }, 350);
 });
 
-// When cursor leaves — shrink + hide GIF instantly
+// Hover OUT
 hex.addEventListener("mouseleave", () => {
     hex.classList.remove("hovered");
 
-    gif.style.opacity = 0;
-    still.style.opacity = 1;
+    gif.style.opacity = 0;      // hide GIF
+    still.style.opacity = 1;    // show still image
 
-    // Stop the GIF so it doesn't animate small
-    gif.src = "";
+    // DO NOT clear gif.src — prevents flashing border
 });
